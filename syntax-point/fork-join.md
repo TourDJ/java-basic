@@ -5,7 +5,8 @@
 
 In parallel computing, the fork–join model is a way of setting up and executing parallel programs, such that execution branches off in parallel at designated points in the program, to "join" (merge) at a subsequent point and resume sequential execution. Parallel sections may fork recursively until a certain task granularity is reached. Fork–join can be considered a parallel design pattern.
 
-Official explain
+Below is the author of jdk fork-join's Doug Lea give explain:
+
 ### Implementation Overview
 
 The `ForkJoinPool` class and its nested classes provide the main functionality and control for a set of worker threads: Submissions from non-FJ threads enter into submission queues. Workers take these tasks and typically split them into subtasks that may be stolen by other workers.  Preference rules give first priority to processing tasks from their own queues (LIFO or FIFO, depending on mode), then to randomized FIFO steals of tasks in other queues.  This framework began as vehicle for supporting tree-structured parallelism using work-stealing. Over time, its scalability advantages led to extensions and changes to better support more diverse usage contexts.  Because most internal methods and nested classes are interrelated, their main rationale and descriptions are presented here individual methods and nested classes contain only brief comments about details.
