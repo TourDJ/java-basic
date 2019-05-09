@@ -18,5 +18,5 @@ A collections framework is a unified architecture for representing and manipulat
 * Algorithms: These are the methods that perform useful computations, such as searching and sorting, on objects that implement collection interfaces. The algorithms are said to be polymorphic: that is, the same method can be used on many different implementations of the appropriate collection interface. In essence, algorithms are reusable functionality.
 
 集合框架资料： 
-* [集合框架 API](https://docs.oracle.com/javase/8/docs/api/)    
+* [集合框架 API](https://docs.oracle.com/javase/8/docs/technotes/guides/collections/index.html)    
 * [集合框架文档](https://docs.oracle.com/javase/tutorial/collections/intro/index.html)    
