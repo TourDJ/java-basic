@@ -20,3 +20,12 @@ A collections framework is a unified architecture for representing and manipulat
 集合框架资料： 
 * [集合框架 API](https://docs.oracle.com/javase/8/docs/technotes/guides/collections/index.html)    
 * [集合框架文档](https://docs.oracle.com/javase/tutorial/collections/intro/index.html)    
+
+## Java8
+Java 8 是当前的主流版本，也是继 Java 6 之后相对稳定的一个版本。Java8 增加了很多使用且能提高性能的功能，比如说流、Lambda 表达式。实际上，Java8 在 Java7 的基础上作了很大的改变，不但增加了很多新特性，而且对现有的代码也作了很多改进，另外，编程风格也完全不同了。
+
+Stream.collect 是一个终端操作,它接收的参数是将流中的元素累积到汇总结果的各种方式，称为收集器。
+
+|方法|返回类型|说明|示例|
+|-------|----|---------|----------------|
+|toList|List<T>|把流中所有元素收集到List中|List<Menu> menus=Menu.getMenus.stream().collect(Collectors.toList())|
