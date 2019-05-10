@@ -26,6 +26,11 @@ Java 8 是当前的主流版本，也是继 Java 6 之后相对稳定的一个�
 
 ## Fork/Join
 Fork-Join 是 Java7 中新增的功能，通过使用 Doug Lea 提供的 Fork/Join 框架，软件开发人员只需要关注任务的划分和中间结果的组合就能充分利用并行平台的优良性能。其他和并行相关的诸多难于处理的问题，例如负载平衡、同步等，都可以由框架采用统一的方式解决。
+
+详细原理可参考官方的 API 说明：     
+[https://github.com/Smallbucket/java-basic/edit/master/README.md](./syntax-point/fork-join.md)    
+
+如何使用呢？
 * [JDK 7 中的 Fork/Join 模式](https://www.ibm.com/developerworks/cn/java/j-lo-forkjoin/)   
 
 ### 流(Stream)
