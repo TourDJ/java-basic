@@ -51,8 +51,11 @@ Stream.collect 是一个终端操作,它接收的参数是将流中的元素累�
 |collectingAndThen|转换函数返回的类型|包裹另一个转换器,对其结果应用转换函数|```Int count=Menu.getMenus.stream().collect(collectingAndThen(toList(),List::size))```|
 |groupingBy|Map<K,List<T>>|根据流中元素的某个值对流中的元素进行分组,并将属性值做为结果map的键|```Map<Type,List<Menu>> menuType=Menu.getMenus.stream().collect(groupingby(Menu::getType))```|
 |partitioningBy|Map<Boolean,List<T>>|根据流中每个元素应用谓语的结果来对项目进行分区|Map<Boolean,List<Menu>> menuType=Menu.getMenus.stream().collect(partitioningBy(Menu::isType))```|
-  
-  Oracle Java 语言架构师 Brian Goetz
-[State of the Lambda](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-final.html)       
-[State of the Lambda: Libraries Edition](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-libraries-final.html)      
-[Translation of Lambda Expressions](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-translation.html)     
+ 
+### Lambda
+Java 语言架构师 Brian Goetz 写的关于 Lambda 的三部曲：
+* [State of the Lambda](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-final.html)       
+* [State of the Lambda: Libraries Edition](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-libraries-final.html)      
+* [Translation of Lambda Expressions](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-translation.html)     
+
+
