@@ -28,4 +28,4 @@ Stream.collect 是一个终端操作,它接收的参数是将流中的元素累�
 
 |方法|返回类型|说明|示例|
 |-------|----|---------|----------------|
-|toList|List<T>|把流中所有元素收集到List中|List<Menu> menus=Menu.getMenus.stream().collect(Collectors.toList())|
+|toList|List<T>|把流中所有元素收集到List中|```java List<Menu> menus=Menu.getMenus.stream().collect(Collectors.toList())```|
