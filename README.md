@@ -61,3 +61,8 @@ Java 中的 Lambda 实现原理，可以看看 Java 语言架构师 Brian Goetz 
 * [Translation of Lambda Expressions](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-translation.html)     
 
 
+### 函数式接口
+
+[Java 8函数式接口的秘密](https://colobu.com/2014/10/28/secrets-of-java-8-functional-interface/)    
+
+
