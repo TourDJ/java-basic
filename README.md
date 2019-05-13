@@ -53,7 +53,9 @@ Stream.collect 是一个终端操作,它接收的参数是将流中的元素累�
 |partitioningBy|Map<Boolean,List<T>>|根据流中每个元素应用谓语的结果来对项目进行分区|Map<Boolean,List<Menu>> menuType=Menu.getMenus.stream().collect(partitioningBy(Menu::isType))```|
  
 ### Lambda
-Java 语言架构师 Brian Goetz 写的关于 Lambda 的三部曲：
+Java 8 开始 支持 Lambda 了，最早接触 Lambda 是在 C# 中，还有 Javascript 中的箭头函数。
+
+Java 中的 Lambda 实现原理，可以看看 Java 语言架构师 Brian Goetz 写的关于 Lambda 的三部曲：
 * [State of the Lambda](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-state-final.html)       
 * [State of the Lambda: Libraries Edition](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-libraries-final.html)      
 * [Translation of Lambda Expressions](http://cr.openjdk.java.net/~briangoetz/lambda/lambda-translation.html)     
