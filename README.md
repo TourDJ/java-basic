@@ -66,3 +66,9 @@ Java 中的 Lambda 实现原理，可以看看 Java 语言架构师 Brian Goetz 
 [Java 8函数式接口的秘密](https://colobu.com/2014/10/28/secrets-of-java-8-functional-interface/)    
 
 
+
+### 资料
+
+* [Java command](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)    
+* [Java HotSpot VM](https://www.oracle.com/technetwork/java/javase/index-137495.html)     
+
