@@ -66,6 +66,9 @@ Java 中的 Lambda 实现原理，可以看看 Java 语言架构师 Brian Goetz 
 [Java 8函数式接口的秘密](https://colobu.com/2014/10/28/secrets-of-java-8-functional-interface/)    
 
 
+### Eclipse 常用快捷键
+`Ctrl+T` 搜索当前接口的实现类
+
 
 ### 资料
 
