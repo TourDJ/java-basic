@@ -67,7 +67,13 @@ Java 中的 Lambda 实现原理，可以看看 Java 语言架构师 Brian Goetz 
 
 
 ### Eclipse 常用快捷键
-`Ctrl+T` 搜索当前接口的实现类
+`Ctrl+T`        搜索当前接口的实现类      
+`Ctrl+O`        显示类中方法和属性的大纲，能快速定位类的方法和属性    
+`Ctrl+M`        窗口最大化和还原     
+`Ctrl+ShiftT`   查找工作空间（Workspace）构建路径中的可找到Java类文件，可以使用“\*”、“？”等通配符     
+`Ctrl+Shift+R`  查找工作空间（Workspace）中的所有文件（包括Java文件），也可以使用通配符      
+`Ctrl+Shift+G`  查找类、方法和属性的引用     
+`Ctrl+L`        定位到当前编辑器的某一行
 
 
 ### 资料
