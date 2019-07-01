@@ -80,4 +80,7 @@ Java 中的 Lambda 实现原理，可以看看 Java 语言架构师 Brian Goetz 
 
 * [Java command](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)    
 * [Java HotSpot VM](https://www.oracle.com/technetwork/java/javase/index-137495.html)     
+* [The Java8 Language Specification](https://docs.oracle.com/javase/specs/jls/se8/html/index.html)     
+* [The Java8 Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se8/html/index.html)     
+
 
