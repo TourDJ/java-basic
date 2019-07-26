@@ -1,0 +1,16 @@
+
+
+DataSourceBuilder
+AbstractDataSource
+DataSourceProperties
+DataSourceConfiguration
+DataSourceAutoConfiguration
+DataSourceInitializer
+
+@ConfigurationProperties
+@ConditionalOnProperty
+@ConditionalOnMissingBean
+@ConditionalOnClass
+
+Tomcat 的 JDBC 连接池
+http://wiki.jikexueyuan.com/project/tomcat/tomcat-jdbc-pool.html
