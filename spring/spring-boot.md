@@ -66,6 +66,7 @@ Spring Boot 使用您在 CLASSPATH 中指定的 JAR，形成一个有关如何�
 
 Spring Boot 使用您定义 bean 的方式来确定如何自动配置自身。例如，如果您为 JPA bean 添加了 @Entity 注释，Spring Boot 会自动配置 JPA，这样您就不需要 persistence.xml 文件。
 
-*参考文档：*     
+
+### 参考资料    
 [Spring Boot 基础](https://www.ibm.com/developerworks/cn/java/j-spring-boot-basics-perry/index.html)      
 
