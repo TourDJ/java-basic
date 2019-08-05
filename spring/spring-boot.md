@@ -1,12 +1,18 @@
 ## Spring Boot
-### 什么是 Spring Boot?
+
+- [Spring Boot 是什么](#whatisspring)      
+- [Starter](#starter)      
+
+
+
+### <a id="whatisspring">Spring Boot 是什么？</a>
 官方描述：    
-Spring Boot 使您能轻松地创建独立的、生产级的、基于 Spring 且能直接运行的应用程序。
+<code>“ Spring Boot 使您能轻松地创建独立的、生产级的、基于 Spring 且能直接运行的应用程序。我们对 Spring 平台和第三方库有自己的看法，所以您从一开始只会遇到极少的麻烦。”</code>
 
 Spring Boot 是一个轻量级框架，可以完成基于 Spring 的应用程序的大部分配置工作。目的是提供一组工具，以便快速构建容易配置的 Spring 应用程序。
 
 
-### Starter
+### <a id="starter">Starter</a>
 starter 实际上是一组依赖项（比如 Maven POM），这些依赖项是 starter 所表示的应用程序类型所独有的。所有 starter 都使用以下命名约定：spring-boot-starter-XYZ，其中 XYZ 是想要构建的应用程序类型。以下是一些流行的 Spring Boot starter：
 
 * spring-boot-starter-web 用于构建 RESTful Web 服务，它使用 Spring MVC 和 Tomcat 作为嵌入式应用程序容器。
