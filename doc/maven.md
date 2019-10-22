@@ -23,3 +23,11 @@ mvn install:install-file -DgroupId=com.baidu -DartifactId=ueditor -Dversion=1.0.
     </configuration>
 </plugin>
 ```
+但是打包后并不包含依赖的本地jar。修改`maven-assembly-plugin`插件的配置文件，增加如下配置：
+```
+<fileSet>      
+    <directory>src\lib</directory>
+    <outputDirectory>lib</outputDirectory>
+</fileSet>
+```
+即可把 jar 包输出到target根目录lib下。
