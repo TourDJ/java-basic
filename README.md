@@ -62,8 +62,23 @@ Java 中的 Lambda 实现原理，可以看看 Java 语言架构师 Brian Goetz 
 
 
 ### 函数式接口
+函数式接口是指在接口里面只能有一个抽象方法。
+```java
+    @FunctionalInterface
+    interface GreetingService
+    {
+        void sayMessage(String message);
+    }
+```
+Java 8为函数式接口引入了一个新注解`@FunctionalInterface`，主要用于编译级错误检查，加上该注解，当你写的接口不符合函数式接口定义的时候，编译器会报错。加不加`@FunctionalInterface`对于接口是不是函数式接口没有影响。
 
-[Java 8函数式接口的秘密](https://colobu.com/2014/10/28/secrets-of-java-8-functional-interface/)    
+#### 链接资料：
+[Java 8函数式接口的秘密](https://colobu.com/2014/10/28/secrets-of-java-8-functional-interface/)   
+
+### 方法引用
+
+#### 参考资料：
+[Java Method References](https://www.javatpoint.com/java-8-method-reference)      
 
 
 ### Eclipse
