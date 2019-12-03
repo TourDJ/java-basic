@@ -7,7 +7,8 @@ Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言
 ![j2se5](./images/j2se5.gif)   
 图：一张很经典的 java 组织架构图
 
-## Java 集合框架
+## Java 基础知识
+### Java 集合框架
 
 什么是集合框架?摘录了一段官方的说明：
 
@@ -21,10 +22,10 @@ A collections framework is a unified architecture for representing and manipulat
 * [集合框架 API](https://docs.oracle.com/javase/8/docs/technotes/guides/collections/index.html)    
 * [集合框架文档](https://docs.oracle.com/javase/tutorial/collections/intro/index.html)    
 
-## Java 新特性
+### Java 新特性
 Java 8 是当前的主流版本，也是继 Java 6 之后相对稳定的一个版本。Java8 增加了很多使用且能提高性能的功能，比如说流、Lambda 表达式。实际上，Java8 在 Java7 的基础上作了很大的改变，不但增加了很多新特性，而且对现有的代码也作了很多改进，另外，编程风格也完全不同了。
 
-## Fork/Join
+### Fork/Join
 Fork-Join 是 Java7 中新增的功能，通过使用 Doug Lea 提供的 Fork/Join 框架，软件开发人员只需要关注任务的划分和中间结果的组合就能充分利用并行平台的优良性能。其他和并行相关的诸多难于处理的问题，例如负载平衡、同步等，都可以由框架采用统一的方式解决。
 
 详细原理可参考官方的 API 说明：     
@@ -81,12 +82,14 @@ Java 8为函数式接口引入了一个新注解`@FunctionalInterface`，主要�
 #### 参考资料：
 [Java Method References](https://www.javatpoint.com/java-8-method-reference)      
 
-
+## Java 生态圈
 ### Eclipse
 * [Eclipse 常用快捷键](eclipse.md)    
 
+### Maven
 
-### 资料
+
+## 技术资料
 
 * [Java command](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)    
 * [Java HotSpot VM](https://www.oracle.com/technetwork/java/javase/index-137495.html)     
