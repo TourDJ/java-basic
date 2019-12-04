@@ -83,7 +83,8 @@ Java 8为函数式接口引入了一个新注解`@FunctionalInterface`，主要�
 [Java Method References](https://www.javatpoint.com/java-8-method-reference)      
 
 ### 经典场景
- - [ThreadLocal](./scene/threadlocal.md)
+ - [ThreadLocal 何时用？](./scene/threadlocal.md)    
+ - [Java中的弱引用](./scene/java-reference.md)        
 
 ## Java 生态圈
 ### Eclipse
