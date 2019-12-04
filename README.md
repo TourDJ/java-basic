@@ -88,9 +88,10 @@ Java 8为函数式接口引入了一个新注解`@FunctionalInterface`，主要�
 
 ## Java 生态圈
 ### Eclipse
-* [Eclipse 常用快捷键](eclipse.md)    
+* [Eclipse 常用快捷键](./ecosystem/eclipse.md)    
 
 ### Maven
+- [Maven](./ecosystem/maven.md)     
 
 ### Spring
 
