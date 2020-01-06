@@ -25,7 +25,7 @@
 * 文件的行可以从`BufferedReader.lines()`获取 ;
 * 文件路径的流可以从Files中的方法获得;
 * 随机数流可以从`Random.ints()`获得;
-* 许多其它的数据流的方法的轴承在JDK，包括BitSet.stream() ， Pattern.splitAsStream(java.lang.CharSequence)和JarFile.stream() 。
+* 许多JDK中其它的数据流的方法，包括`BitSet.stream()`， `Pattern.splitAsStream(java.lang.CharSequence`)和`JarFile.stream()`。
 
 附加流源可以由第三方库提供，使用[these techniques](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#StreamSources) 。
 
