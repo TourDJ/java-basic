@@ -10,24 +10,26 @@
 ```   
 这里我们使用 widgets `Collection<Widget>` 作为流的源，然后在流上执行 filter-map-reduce 以获得红色小部件的权重之和。 （求和是一个reduction操作的例子）。
 
-这个包中引入的关键抽象是流。 类 `Stream`， `IntStream`， `LongStream` 和 `DoubleStream` 超过目的和原始流int ， long和double类型。 流与集合有以下几种不同：
+这个包中引入的关键抽象是流。 `Stream`，`IntStream`，`LongStream`和`DoubleStream`类是对象以及原始int，long和double类型的流。 流与集合有以下几种不同：
 
-没有存储。 流不是存储元素的数据结构; 相反，它通过计算操作的流水线传送诸如数据结构，阵列，生成器功能或I / O通道的源的元件。
-功能性质。 流上的操作产生结果，但不会修改其来源。 例如，过滤从Stream获得的Stream会生成新的Stream而不需要过滤的元素，而不是从源集合中删除元素。
-懒惰寻求。 许多流操作（如过滤，映射或重复删除）可以懒惰地实现，从而暴露优化的机会。 例如，“找到具有三个连续元音的第一个String ”不需要检查所有的输入字符串。 流操作分为中间（ Stream生产）操作和终端（价值或副作用生成）操作。 中级操作总是懒惰。
-可能无限。 虽然集合的大小有限，但流不需要。 诸如limit(n)或findFirst()之类的limit(n) findFirst()可以允许无限流上的计算在有限的时间内完成。
-消耗品 流的元素只能在流的一生中访问一次。 像Iterator一样 ，必须生成一个新流来重新访问源的相同元素。
+* 没有存储。 流不是存储元素的数据结构; 相反，它通过计算操作的流水线传送诸如数据结构，阵列，生成器功能或 I/O 通道的源的元件。
+* 功能性质。 流上的操作产生结果，但不会修改其来源。 例如，过滤从Stream获得的Stream会生成新的Stream而不需要过滤的元素，而不是从源集合中删除元素。
+* 懒惰寻求。 许多流操作（如过滤，映射或重复删除）可以懒惰地实现，从而暴露优化的机会。 例如，“找到具有三个连续元音的第一个String”不需要检查所有的输入字符串。 流操作分为中间（Stream生产）操作和终端（价值或副作用生成）操作。 中间操作总是懒惰。
+* 可能无限。 虽然集合的大小有限，但流不需要。 诸如`limit(n)`或`findFirst()`之类的可以允许无限流上的计算在有限的时间内完成。
+* 消耗品 流的元素只能在流的一生中访问一次。 像Iterator一样 ，必须生成一个新流来重新访问源的相同元素。
+
 流可以通过多种方式获得。 一些例子包括：
-从Collection通过stream()和parallelStream()方法;
-从阵列通过Arrays.stream(Object[]) ;
-从上流类静态工厂的方法，如Stream.of(Object[]) ， IntStream.range(int, int)或Stream.iterate(Object, UnaryOperator) ;
-文件的行可以从BufferedReader.lines()获取 ;
-文件路径的流可以从Files中的方法获得;
-随机数流可以从Random.ints()获得;
-许多其它的数据流的方法的轴承在JDK，包括BitSet.stream() ， Pattern.splitAsStream(java.lang.CharSequence)和JarFile.stream() 。
-附加流源可以由第三方库提供，使用these techniques 。
+* 从 Collection 通过 `stream()` 和 `parallelStream()` 方法;
+* 从阵列通过 `Arrays.stream(Object[])` ;
+* 从流类静态工厂的方法，如`Stream.of(Object[])`，`IntStream.range(int, int)`或`Stream.iterate(Object, UnaryOperator)`;
+* 文件的行可以从`BufferedReader.lines()`获取 ;
+* 文件路径的流可以从Files中的方法获得;
+* 随机数流可以从`Random.ints()`获得;
+* 许多其它的数据流的方法的轴承在JDK，包括BitSet.stream() ， Pattern.splitAsStream(java.lang.CharSequence)和JarFile.stream() 。
 
-Stream operations and pipelines
+附加流源可以由第三方库提供，使用[these techniques](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#StreamSources) 。
+
+### Stream operations and pipelines
 流操作分为中间和终端操作，并且组合以形成流管线 。 流管线由源（例如Collection ，阵列，发生器功能或I / O通道）组成; 其次是零个或多个中间操作，如Stream.filter或Stream.map ; 以及诸如Stream.forEach或Stream.reduce的终端Stream.reduce 。
 
 中间操作返回一个新的流。 他们总是懒惰 执行诸如filter()操作实际上不执行任何过滤，而是创建一个新的流，当被遍历时，它包含与给定谓词匹配的初始流的元素。 在管道的终端操作被执行之前，管道源的遍历不会开始。
