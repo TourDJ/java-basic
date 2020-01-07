@@ -29,7 +29,7 @@
 
 附加流源可以由第三方库提供，使用[these techniques](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html#StreamSources) 。
 
-### Stream operations and pipelines
+### 流的操作和管道
 流操作分为中间和终端操作，并且组合形成流管道。 流管道由数据源（例如Collection，阵列，发生器功能或I/O通道）组成; 紧跟着零个或多个中间操作，如`Stream.filter`或`Stream.map`; 以及一个诸如`Stream.forEach`或`Stream.reduce`的终端操作。
 
 中间操作返回一个新的流。 他们总是很懒惰。 执行诸如`filter()`之类的中间操作实际上并不执行任何过滤，而是创建一个新的流，该新流在遍历时将包含与给定谓词匹配的初始流的元素。 在执行管道的终端操作之前，不会开始遍历管道源。
