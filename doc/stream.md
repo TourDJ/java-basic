@@ -47,16 +47,22 @@
 此外，一些操作被认为是短路操作。 如果使用无限输入，则可以产生有限流，因此中间操作是短路的。 如果当无限输入呈现时，终端操作可能会在有限时间内终止。 在流水线中进行短路操作是处理无限流在有限时间内正常终止的必要但不足够的条件。
 
 ### 并行性
-具有显式for-循环的处理元素for-是串行的。 流通过将计算重构为聚合操作的管道来促进并行执行，而不是作为每个单独元素的必要操作。 所有流操作可以串行或并行执行。 JDK中的流实现创建串行流，除非显式请求并行。 例如， Collection具有方法Collection.stream()和Collection.parallelStream() ，其分别产生顺序和并行流; 诸如IntStream.range(int, int)等其他流承载方法产生顺序流，但是可以通过调用它们的BaseStream.parallel()方法来有效地并行化这些流。 要并行执行先前的“小部件权重总和”查询，我们可以这样做：
+具有显式for循环的处理元素本质上是串行的。 流通过将计算重构为聚合操作的管道来促进并行执行，而不是作为每个单独元素的必要操作。 所有流操作可以串行或并行执行。 除非明确要求并行性，否则JDK中的流实现将创建串行流。 例如， Collection具有方法`Collection.stream()`和`Collection.parallelStream() `，其分别产生顺序流和并行流; 诸如`IntStream.range(int, int)`等其他流承载方法产生顺序流，但是可以通过调用它们的`BaseStream.parallel()`方法来有效地并行化这些流。 要并行执行先前的“小部件权重总和”查询，我们可以这样做：
+```java
+  int sumOfWeights = widgets.parallelStream()
+                            .filter(b -> b.getColor() == RED)
+                            .mapToInt(b -> b.getWeight())
+                            .sum();
+```
+此示例的串行和并行版本之间的唯一区别是创建初始流，使用 “parallelStream()” 而不是 “stream()” 。 当终端操作被启动时，根据被调用的流的方向，顺序或并行地执行流管道。 流是否以串行或并行方式执行可以使用`isParallel()`方法确定，并且可以使用`BaseStream.sequential()`和`BaseStream.parallel()`操作修改流的方向。  
 
-   int sumOfWeights = widgets.parallelStream() .filter(b -> b.getColor() == RED) .mapToInt(b -> b.getWeight()) .sum();  
-此示例的串行和并行版本之间的唯一区别是创建初始流，使用“ parallelStream() ”而不是“ stream() ”。 当终端操作被启动时，根据被调用的流的方向，顺序或并行地执行流管道。 流是否以串行或并行方式执行可以使用isParallel()方法确定，并且可以使用BaseStream.sequential()和BaseStream.parallel()操作修改流的方向。 当终端操作被启动时，根据其被调用的流的模式，顺序地或并行地执行流流水线。
+启动终端操作后，将根据调用流的方式依次或并行执行流管道。
 
-除了确定为非确定性的操作，如findAny() ，流是顺序还是并行执行，不应该改变计算结果。
+除了确定为非确定性的操作，如`findAny()` ，流是顺序还是并行执行，不应该改变计算结果。
 
-大多数流操作接受描述用户指定行为的参数，这些行为通常是lambda表达式。 为了保持正确的行为，这些行为参数必须是非干扰的 ，在大多数情况下必须是无状态的 。 这样的参数总是functional interface的例子 ，如Function ，并且通常是lambda表达式或方法引用。
+大多数流操作接受描述用户指定行为的参数，这些行为通常是lambda表达式。 为了保持正确的行为，这些行为参数必须是非干扰的 ，在大多数情况下必须是无状态的 。 这样的参数总是[functional interface](https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html)的例子 ，如[Function](https://docs.oracle.com/javase/8/docs/api/java/util/function/Function.html) ，并且通常是lambda表达式或方法引用。
 
-Non-interference
+### Non-interference
 Streams使您能够对各种数据源执行可能并行的聚合操作，包括甚至非线程安全的集合，如ArrayList 。 这是可能的，只有我们能预防甲流的管道的执行过程中与数据源的干扰 。 除了逃生舱操作iterator()和spliterator() ，当调用终端操作时开始执行，终端操作完成时结束。 对于大多数数据源，防止干扰意味着确保在流管线的执行期间完全不修改数据源。 其中值得注意的例外是其源是并发集合的流，它们专门用于处理并发修改。 并发流源是Spliterator报告CONCURRENT特征。
 因此，源流可能不并发的流管道中的行为参数不应该修改流的数据源。 据说行为参数会干扰非并发数据源，如果它修改或导致修改流的数据源。 不干扰的需要适用于所有管道，而不仅仅是平行管道。 除非流源是并发的，否则在流管道的执行期间修改流的数据源可能会导致异常，错误的答案或不合规的行为。 对于行为良好的流源，可以在终端操作开始之前对源进行修改，这些修改将反映在被覆盖的元素中。 例如，考虑以下代码：
 
