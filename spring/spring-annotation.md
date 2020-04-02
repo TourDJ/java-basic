@@ -191,6 +191,8 @@ Spring Boot 中有个注解 @ConditionalOnProperty，这个注解能够控制某
 @ConditionalOnJndi：在JNDI存在的条件下触发实例化。
 @ConditionalOnSingleCandidate：当指定的Bean在容器中只有一个，或者有多个但是指定了首选的Bean时触发实例化。
 
+### @ImportResource
+
 
 ## 参考资料
 [Spring 注解依赖注入实现](https://www.ibm.com/developerworks/cn/opensource/os-cn-spring-iocannt/index.html)     
