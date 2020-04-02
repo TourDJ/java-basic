@@ -1,7 +1,11 @@
 
 - [Spring 注解](#spring-annotation)       
+  - [@Scope](#annotation-scope)        
   - [@Configuration](#annotation-Configuration)     
   - [@Bean](#annotation-bean)     
+  - [@RequestParam](#annotation-RequestParam)     
+  - [@PathVariable](#annotation-PathVariable)      
+  
   
 
 ## <a id="spring-annotation">Spring 注解</a>
@@ -15,7 +19,7 @@
 
 除了使用上面第三种类型的构造函数让容器自动扫描 Bean 的配置信息以外，`AnnotationConfigApplicationContext` 还提供了 scan() 方法，其功能与上面也类似，该方法主要用在容器初始化之后动态增加 Bean 至容器中。调用了该方法以后，通常需要立即手动调用 refresh() 刷新容器，以让变更立即生效。 
 
-### @Scope
+### <a id="annotation-scope">@Scope</a>
 @Scope 就是用来配置 spring bean 的作用域，它标识 bean 的作用域。scope 包含 singleton、prototype、request、session、global session 五个作用域。
 * singleton 单例模式：全局有且仅有一个实例。
 * prototype 原型模式：每次获取Bean的时候会有一个新的实例。
@@ -71,8 +75,8 @@ Spring 在解析到以上文件时，将识别出标注 @Bean 的所有方法，
 
 与 XML 配置中的 autowire 属性的取值相比，这里少了 constructor，这是因为 constructor 在这里已经没有意义了。`@Bean` 没有直接提供指定作用域的属性，可以通过 `@Scope` 来实现该功能，关于 @Scope 的用法已在上文列举。 
 
-#### @RequestParam  
-@RequestParam用于将请求参数区数据映射到功能处理方法的参数上。
+#### <a id="annotation-RequestParam">@RequestParam</a> 
+`RequestParam`用于将请求参数数据映射到功能处理方法的参数上。
 例如： 请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。 
 
       public String login(@RequestParam(value="username", required=true, defaultValue="zhang") String username)
@@ -81,14 +85,14 @@ Spring 在解析到以上文件时，将识别出标注 @Bean 的所有方法，
 
       public String login(@RequestParam(value="userName") String []  userNames)     
 
-#### @PathVariable
-当使用@RequestMapping URI template 样式映射时， 即 someUrl/{paramId}, 这时的paramId可通过 @Pathvariable注解绑定它传过来的值到方法的参数上。
+#### <a id="annotation-PathVariable">@PathVariable</a>
+当使用`@RequestMapping` URI template 样式映射时， 即 someUrl/{paramId}, 这时的paramId可通过 @Pathvariable注解绑定它传过来的值到方法的参数上。
 
       @RequestMapping("/blogs/{id}")  
       public void findBlog(@PathVariable String id, Model model) {      
         // implementation omitted  
       } 
-上面代码把URI template 中变量 id 的值绑定到方法的参数上。若方法参数名称和需要绑定的uri template中变量名称不一致，需要在@PathVariable("name")指定uri template中的名称。
+上面代码把URI template 中变量 id 的值绑定到方法的参数上。若方法参数名称和需要绑定的uri template中变量名称不一致，需要在@PathVariable("name")指定 uri template 中的名称。
 
 #### @RequestBody
 
