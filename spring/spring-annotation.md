@@ -6,6 +6,17 @@
 
 ## <a id="spring-annotation">Spring 注解</a>
 
+基于注解的容器初始化。
+
+`AnnotationConfigApplicationContext` 提供了三个构造函数用于初始化容器。 
+* AnnotationConfigApplicationContext()：该构造函数初始化一个空容器，容器不包含任何 Bean 信息，需要在稍后通过调用其 register() 方法注册配置类，并调用 refresh() 方法刷新容器。
+* AnnotationConfigApplicationContext(Class... annotatedClasses)：这是最常用的构造函数，通过将涉及到的配置类传递给该构造函数，以实现将相应配置类中的 Bean 自动注册到容器中。
+* AnnotationConfigApplicationContext(String... basePackages)：该构造函数会自动扫描以给定的包及其子包下的所有类，并自动识别所有的 Spring Bean，将其注册到容器中。它不但识别标注 @Configuration 的配置类并正确解析，而且同样能识别使用 @Repository、@Service、@Controller、@Component 标注的类。
+
+除了使用上面第三种类型的构造函数让容器自动扫描 Bean 的配置信息以外，`AnnotationConfigApplicationContext` 还提供了 scan() 方法，其功能与上面也类似，该方法主要用在容器初始化之后动态增加 Bean 至容器中。调用了该方法以后，通常需要立即手动调用 refresh() 刷新容器，以让变更立即生效。 
+
+### @Scope
+
 ### <a id="annotation-Configuration">@Configuration</a>
 
 在用于指定配置信息的类上加上 [@Configuration](https://www.tuicool.com/articles/M3MVr2) 注解，明确指出该类是 Bean 配置的信息源。Spring 对标注 Configuration 的类有如下要求：  
