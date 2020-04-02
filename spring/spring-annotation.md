@@ -5,6 +5,8 @@
   - [@Bean](#annotation-bean)     
   - [@RequestParam](#annotation-RequestParam)     
   - [@PathVariable](#annotation-PathVariable)      
+  - [@RequestBody](#annotation-RequestBody)        
+  - [@ResponseBody](#annotation-ResponseBody)        
   
   
 
@@ -75,7 +77,7 @@ Spring 在解析到以上文件时，将识别出标注 @Bean 的所有方法，
 
 与 XML 配置中的 autowire 属性的取值相比，这里少了 constructor，这是因为 constructor 在这里已经没有意义了。`@Bean` 没有直接提供指定作用域的属性，可以通过 `@Scope` 来实现该功能，关于 @Scope 的用法已在上文列举。 
 
-#### <a id="annotation-RequestParam">@RequestParam</a> 
+### <a id="annotation-RequestParam">@RequestParam</a> 
 `RequestParam`用于将请求参数数据映射到功能处理方法的参数上。
 例如： 请求中包含username参数（如/requestparam1?userName=zhang），则自动传入。 
 
@@ -85,7 +87,7 @@ Spring 在解析到以上文件时，将识别出标注 @Bean 的所有方法，
 
       public String login(@RequestParam(value="userName") String []  userNames)     
 
-#### <a id="annotation-PathVariable">@PathVariable</a>
+### <a id="annotation-PathVariable">@PathVariable</a>
 当使用`@RequestMapping` URI template 样式映射时， 即 someUrl/{paramId}, 这时的paramId可通过 @Pathvariable注解绑定它传过来的值到方法的参数上。
 
       @RequestMapping("/blogs/{id}")  
@@ -94,11 +96,11 @@ Spring 在解析到以上文件时，将识别出标注 @Bean 的所有方法，
       } 
 上面代码把URI template 中变量 id 的值绑定到方法的参数上。若方法参数名称和需要绑定的uri template中变量名称不一致，需要在@PathVariable("name")指定 uri template 中的名称。
 
-#### @RequestBody
+### <a id="annotation-RequestBody">@RequestBody</a>
 
-作用： 
-* 该注解用于读取Request请求的body部分数据，使用系统默认配置的HttpMessageConverter进行解析，然后把相应的数据绑定到要返回的对象上；
-* 再把HttpMessageConverter返回的对象数据绑定到 controller中方法的参数上。
+`@RequestBody` 作用： 
+* 该注解用于读取Request请求的body部分数据，使用系统默认配置的`HttpMessageConverter`进行解析，然后把相应的数据绑定到要返回的对象上
+* 再把`HttpMessageConverter`返回的对象数据绑定到 controller中方法的参数上
 
 使用时机：
 
@@ -112,15 +114,14 @@ B) PUT方式提交时， 根据request header Content-Type的值来判断:
     application/x-www-form-urlencoded， 必须；
     multipart/form-data, 不能处理；
     其他格式， 必须；
-> 说明：request的body部分的数据编码格式由header部分的Content-Type指定；
+> 说明：request的body部分的数据编码格式由header部分的Content-Type指定
 
-#### @ResponseBody
+### <a id="annotation-ResponseBody">@ResponseBody</a>
 
-作用： 
-该注解用于将Controller的方法返回的对象，通过适当的HttpMessageConverter转换为指定格式后，写入到Response对象的body数据区。
+`@ResponseBody` 作用： 该注解用于将 Controller 的方法返回的对象，通过适当的`HttpMessageConverter`转换为指定格式后，写入到 Response 对象的 body 数据区。
 
 使用时机：
-返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用
+返回的数据不是html标签的页面，而是其他某种格式的数据时（如json、xml等）使用。
 
 #### [@SessionAttributes](http://www.cnblogs.com/daxin/p/SessionAttributes.html)
 SessionAttributes 注解应用到 Controller上面，可以将Model中的属性同步到session当中。
