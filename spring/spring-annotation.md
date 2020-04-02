@@ -16,6 +16,25 @@
 除了使用上面第三种类型的构造函数让容器自动扫描 Bean 的配置信息以外，`AnnotationConfigApplicationContext` 还提供了 scan() 方法，其功能与上面也类似，该方法主要用在容器初始化之后动态增加 Bean 至容器中。调用了该方法以后，通常需要立即手动调用 refresh() 刷新容器，以让变更立即生效。 
 
 ### @Scope
+@Scope 就是用来配置 spring bean 的作用域，它标识 bean 的作用域。scope 包含 singleton、prototype、request、session、global session 五个作用域。
+* singleton 单例模式：全局有且仅有一个实例。
+* prototype 原型模式：每次获取Bean的时候会有一个新的实例。
+* request：request 表示针对每一次HTTP请求都会产生一个新的bean，同时该bean仅在当前HTTP request内有效。
+* session：session 作用域表示该针对每一次HTTP请求都会产生一个新的bean，同时该bean仅在当前HTTP session内有效。
+* global session：global session作用域类似于标准的HTTP Session作用域，不过它仅仅在基于portlet的web应用中才有意义。Portlet规范定义了全局Session的概念，它被所有构成某个 portlet web应用的各种不同的portlet所共享。在global session作用域中定义的bean被限定于全局portlet Session的生命周期范围内。如果你在web中使用global session作用域来标识bean，那么web会自动当成session类型来使用。
+
+request、session、global session使用的时候首先要在初始化web的web.xml中做如下配置：
+如果你使用的是Servlet 2.4及以上的web容器，那么你仅需要在web应用的XML声明文件web.xml中增加下述ContextListener即可： 
+```xml
+<web-app>
+   ...
+  <listener>
+<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  </listener>
+   ...
+</web-app>
+```
+@scope默认是单例模式（singleton）。
 
 ### <a id="annotation-Configuration">@Configuration</a>
 
@@ -48,7 +67,7 @@ Spring 在解析到以上文件时，将识别出标注 @Bean 的所有方法，
 * autowire -- 指定 Bean 属性的自动装配策略，取值是 Autowire 类型的三个静态属性。
   * Autowire.BY_NAME
   * Autowire.BY_TYPE
-  * Autowire.NO。
+  * Autowire.NO
 
 与 XML 配置中的 autowire 属性的取值相比，这里少了 constructor，这是因为 constructor 在这里已经没有意义了。`@Bean` 没有直接提供指定作用域的属性，可以通过 `@Scope` 来实现该功能，关于 @Scope 的用法已在上文列举。 
 
