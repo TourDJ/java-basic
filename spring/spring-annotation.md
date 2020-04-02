@@ -3,9 +3,7 @@
 
 ## <a id="spring-annotation">Spring 注解</a>
 
-参考： [Spring 注解依赖注入实现](https://www.ibm.com/developerworks/cn/opensource/os-cn-spring-iocannt/index.html)     
-
-#### [@Configuration](https://www.tuicool.com/articles/M3MVr2)
+### [@Configuration](https://www.tuicool.com/articles/M3MVr2)
 
 明确指出该类是 Bean 配置的信息源。Spring 对标注 Configuration 的类有如下要求：  
 * 配置类不能是 final 的；
@@ -151,3 +149,8 @@ Spring Boot 中有个注解 @ConditionalOnProperty，这个注解能够控制某
 @ConditionalOnResource：当类路径下有指定的资源时触发实例化。
 @ConditionalOnJndi：在JNDI存在的条件下触发实例化。
 @ConditionalOnSingleCandidate：当指定的Bean在容器中只有一个，或者有多个但是指定了首选的Bean时触发实例化。
+
+
+## 参考资料
+[Spring 注解依赖注入实现](https://www.ibm.com/developerworks/cn/opensource/os-cn-spring-iocannt/index.html)     
+
