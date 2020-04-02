@@ -1,6 +1,7 @@
 
 - [Spring 注解](#spring-annotation)       
   - [@Configuration](#annotation-Configuration)     
+  - [@Bean](#annotation-bean)     
   
 
 ## <a id="spring-annotation">Spring 注解</a>
@@ -18,10 +19,13 @@
 ```java
 @Configuration 
 public class BookStoreDaoConfig{ 
-@Bean 
-public UserDao userDao(){ return new UserDaoImpl();} 
-@Bean 
-public BookDao bookDao(){return new BookDaoImpl();} 
+
+  @Bean 
+  public UserDao userDao(){ return new UserDaoImpl();} 
+
+  @Bean 
+  public BookDao bookDao(){return new BookDaoImpl();} 
+
 } 
 ```
 Spring 在解析到以上文件时，将识别出标注 @Bean 的所有方法，执行之，并将方法的返回值 ( 这里是 UserDaoImpl 和 BookDaoImpl 对象 ) 注册到 IoC 容器中。默认情况下，Bean 的名字即为方法名。
@@ -31,7 +35,9 @@ Spring 在解析到以上文件时，将识别出标注 @Bean 的所有方法，
 * initMethod -- 容器在初始化完 Bean 之后，会调用该属性指定的方法。这等价于 XML 配置中 的 init-method 属性。
 * destroyMethod -- 该属性与 initMethod 功能相似，在容器销毁 Bean 之前，会调用该属性指定的方法。这等价于 XML 配置中 的 destroy-method 属性。
 * autowire -- 指定 Bean 属性的自动装配策略，取值是 Autowire 类型的三个静态属性。
-  * Autowire.BY_NAME，Autowire.BY_TYPE，Autowire.NO。
+  * Autowire.BY_NAME
+  * Autowire.BY_TYPE
+  * Autowire.NO。
 
 与 XML 配置中的 autowire 属性的取值相比，这里少了 constructor，这是因为 constructor 在这里已经没有意义了。`@Bean` 没有直接提供指定作用域的属性，可以通过 `@Scope` 来实现该功能，关于 @Scope 的用法已在上文列举。 
 
