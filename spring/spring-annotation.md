@@ -1,6 +1,6 @@
 
 - [Spring 注解](#spring-annotation)       
-  - [[@Configuration](#annotation-Configuration)     
+  - [@Configuration](#annotation-Configuration)     
   
 
 ## <a id="spring-annotation">Spring 注解</a>
