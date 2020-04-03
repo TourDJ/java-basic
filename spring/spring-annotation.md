@@ -9,6 +9,9 @@
   - [@ResponseBody](#annotation-ResponseBody)        
   - [@SessionAttributes](#annotation-SessionAttributes)     
   - [@ModelAttribute](#annotation-SessionAttributes)     
+  - [@Controller](#annotation-Controller)       
+  - [@RestController](#annotation-Controller)       
+  - [@RequestMapping](#annotation-Controller)       
   
   
 
@@ -155,14 +158,22 @@ B) PUT方式提交时， 根据request header Content-Type的值来判断:
 @ModelAttribute注释方法
 被@ModelAttribute注释的方法会在此controller每个方法执行前被执行，因此对于一个controller映射多个URL的用法来说，要谨慎使用。
 
-#### @RestController 与 @Controller
-@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。
+### <a id="annotation-Controller">@Controller</a>
+`@Controller` 用于标记在一个类上，使用它标记的类就是一个SpringMVC Controller 对象。分发处理器将会扫描使用了该注解的类的方法。通俗来说，被Controller标记的类就是一个控制器，这个类中的方法，就是相应的动作。
 
-1)如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver不起作用，返回的内容就是Return 里的内容。
+### <a id="annotation-Controller">@RestController</a>
+`@RestController` 注解相当于 `@ResponseBody` ＋ `@Controller` 合在一起的作用。
+
+1)如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器 `InternalResourceViewResolver` 不起作用，返回的内容就是Return 里的内容。
+
 例如：本来应该到success.jsp页面的，则其显示success.
 
-2)如果需要返回到指定页面，则需要用 @Controller配合视图解析器InternalResourceViewResolver才行。
-3)如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。
+2)如果需要返回到指定页面，则需要用 `@Controller` 配合视图解析器 `InternalResourceViewResolver` 才行。
+
+3)如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上`@ResponseBody`注解。
+
+### <a id="annotation-Controller">@RequestMapping</a>
+`@RequestMapping` 是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。
 
 
 #### @ConditionalOnClass
