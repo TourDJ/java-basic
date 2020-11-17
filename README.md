@@ -23,7 +23,7 @@ A collections framework is a unified architecture for representing and manipulat
 * [集合框架文档](https://docs.oracle.com/javase/tutorial/collections/intro/index.html)    
 
 ### Java 新特性
-Java 8 是当前的主流版本，也是继 Java 6 之后相对稳定的一个版本。Java8 增加了很多使用且能提高性能的功能，比如说流、Lambda 表达式。实际上，Java8 在 Java7 的基础上作了很大的改变，不但增加了很多新特性，而且对现有的代码也作了很多改进，另外，编程风格也完全不同了。
+Java8 增加了很多使用且能提高性能的功能，比如说流、Lambda 表达式。实际上，Java8 在 Java7 的基础上作了很大的改变，不但增加了很多新特性，而且对现有的代码也作了很多改进，另外，编程风格也完全不同了。
 
 ### Fork/Join
 Fork-Join 是 Java7 中新增的功能，通过使用 Doug Lea 提供的 Fork/Join 框架，软件开发人员只需要关注任务的划分和中间结果的组合就能充分利用并行平台的优良性能。其他和并行相关的诸多难于处理的问题，例如负载平衡、同步等，都可以由框架采用统一的方式解决。
@@ -35,6 +35,17 @@ Fork-Join 是 Java7 中新增的功能，通过使用 Doug Lea 提供的 Fork/Jo
 * [JDK 7 中的 Fork/Join 模式](https://www.ibm.com/developerworks/cn/java/j-lo-forkjoin/)   
 
 ### 流(Stream)
+Java 8 中的 Stream 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)。Stream API 借助于同样新出现的 Lambda 表达式，极大的提高编程效率和程序可读性。同时它提供串行和并行两种模式进行汇聚操作，并发模式能够充分利用多核处理器的优势，使用 fork/join 并行方式来拆分任务和加速处理过程。通常编写并行代码很难而且容易出错, 但使用 Stream API 无需编写一行多线程的代码，就可以很方便地写出高性能的并发程序。
+
+流的操作类型分为两种：
+
+* Intermediate：一个流可以后面跟随零个或多个 intermediate 操作。其目的主要是打开流，做出某种程度的数据映射/过滤，然后返回一个新的流，交给下一个操作使用。这类操作都是惰性化的（lazy），就是说，仅仅调用到这类方法，并没有真正开始流的遍历。
+* Terminal：一个流只能有一个 terminal 操作，当这个操作执行后，流就被使用“光”了，无法再被操作。所以这必定是流的最后一个操作。Terminal 操作的执行，才会真正开始流的遍历，并且会生成一个结果，或者一个 side effect。
+
+[Stream 官方描述](./doc/stream.md)      
+
+
+#### collectors
 Stream.collect 是一个终端操作,它接收的参数是将流中的元素累积到汇总结果的各种方式，称为收集器。Collectors 中定义了许多采用收集器并生成新收集器的函数方法。
 
 |方法|返回类型|说明|示例|
@@ -52,7 +63,10 @@ Stream.collect 是一个终端操作,它接收的参数是将流中的元素累�
 |collectingAndThen|转换函数返回的类型|包裹另一个转换器,对其结果应用转换函数|```Int count=Menu.getMenus.stream().collect(collectingAndThen(toList(),List::size))```|
 |groupingBy|Map<K,List<T>>|根据流中元素的某个值对流中的元素进行分组,并将属性值做为结果map的键|```Map<Type,List<Menu>> menuType=Menu.getMenus.stream().collect(groupingby(Menu::getType))```|
 |partitioningBy|Map<Boolean,List<T>>|根据流中每个元素应用谓语的结果来对项目进行分区|Map<Boolean,List<Menu>> menuType=Menu.getMenus.stream().collect(partitioningBy(Menu::isType))```|
- 
+
+#### 参考资料
+[Java 8 中的 Streams API 详解](https://www.ibm.com/developerworks/cn/java/j-lo-java8streamapi/)      
+
 ### Lambda
 Java 8 开始 支持 Lambda 了，最早接触 Lambda 是在 C# 中，还有 Javascript 中的箭头函数。
 
